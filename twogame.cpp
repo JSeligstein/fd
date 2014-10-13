@@ -20,16 +20,6 @@ long bico(long n, long k) {
     return result;
 }
 
-long fake_bico(long n, long k) {
-    if (k == 1) {
-        printf("fake_bico(%lu, %lu) = %lu\n", n, k, n);
-        return n;
-    }
-    long result = fac(n)/fac(k);
-    printf("fake_bico(%lu, %lu) = %lu\n", n, k, result);
-    return result;
-}
-
 Player::Player(string n, const char *t, double s, int c) {
     this->name = n;
     this->team = t;
