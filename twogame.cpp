@@ -153,14 +153,9 @@ void TeamMaker::printConsiderations() {
     for (int pos = 0; pos < 6; pos++) {
         long count = posCount[pos];
         long size = (&this->players->at(pos))->size();
-        //total *= bico(size, count);
-        //total *= fac(size)/fac(size-count);
         if (count) {
-            printf("multi: %ld, %ld, %f\n", size, count, pow(size,count));
-        //    total *= pow(size, count);
-        total *= fac(size)/fac(size-count);
+            total *= fac(size)/fac(size-count);
         }
-        printf("total *= fac(%ld)/fac(%ld) which is %ld\n", size, size-count, fac(size)/fac(size-count));
     }
 
     printf("TeamMaker Considerations\n");
@@ -221,6 +216,7 @@ void TeamMaker::findMaxTeams(int posIndex, Team *team) {
             double score = team->score();
             if (score >= this->max) {
                 if (!team->isValid(this->budget, this->maxperteam)) {
+                    team->players[posIndex] = NULL;
                     continue;
                 }
 
@@ -234,24 +230,24 @@ void TeamMaker::findMaxTeams(int posIndex, Team *team) {
         } else {
             this->findMaxTeams(posIndex+1, team);
         }
+        team->players[posIndex] = NULL;
     }
 }
 
 
 int main(int argc, char **argv) {
 
-    int numpos = 3;
+    int numpos = 9;
     int *pos = (int *)malloc(sizeof(int) * numpos);
     pos[0] = POS_QB;
     pos[1] = POS_RB;
     pos[2] = POS_RB;
-    /*
     pos[3] = POS_WR;
     pos[4] = POS_WR;
     pos[5] = POS_WR;
     pos[6] = POS_TE;
     pos[7] = POS_K;
-    pos[8] = POS_D;*/
+    pos[8] = POS_D;
 
     vector<string> *playingTeams = new vector<string>();
     playingTeams->push_back("NYG");

@@ -20,7 +20,6 @@ public:
 
     int size;
     Player **players;
-    void addPlayer(Player *p);
     double score();
     int cost();
     bool hasPlayer(Player *p);
