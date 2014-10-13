@@ -173,7 +173,6 @@ void TeamMaker::printConsiderations() {
         printf("total *= fac(%ld)/fac(%ld) which is %ld\n", size, size-count, fac(size)/fac(size-count));
     }
 
-    printf("%d\n", sizeof(long));
     printf("TeamMaker Considerations\n");
     printf(" -- Teams: %lu\n", this->playingTeams->size());
     printf(" -- Positions: %d\n", this->numpos);
